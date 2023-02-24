@@ -1,5 +1,5 @@
 
-export  function getListMovies(size, movies){
+export function getListMovies(size, movies){
     let populateMovies =[];
     let t ;
     if(size >= 15){

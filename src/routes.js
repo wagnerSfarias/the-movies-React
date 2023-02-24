@@ -6,15 +6,12 @@ import Favorite from "./pages/Favorite";
 
 export default function RoutesApp(){
     return(
-     
         <BrowserRouter>
-        {/* <Switch> */}
              <Routes> 
                 <Route path='/'  element={<Home/>}/>
                <Route path='/detail/:id'  element={<Detail/>}/>
                <Route path='/mylist'  element={<Favorite/>}/>
               </Routes> 
-         {/* </Switch> */}
         </BrowserRouter>
     )
 }

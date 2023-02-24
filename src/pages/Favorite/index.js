@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FaBookmark } from 'react-icons/fa';
+import { baseImg } from '../../services/api';
 import './index.css';
 import { getMoviesSave, deleteMovie } from '../../utils/localStorage';
-
-const baseImg = 'https://image.tmdb.org/t/p/original';
 
 export default function Favorite() {
     const [movies, setMovies] = useState([]);

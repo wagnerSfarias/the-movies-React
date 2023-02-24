@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import { baseImg } from '../../services/api';
 import { useHorizontalScroll } from '../../utils/scrollHorizontal';
 import { Link } from 'react-router-dom';
 import { getListMovies } from '../../utils/movie';
 import './index.css';
-
-const baseImg = 'https://image.tmdb.org/t/p/original';
 
 export default function ListMovie() {
     const [loading, setLoading] = useState(true)
     const [movie, setMovie]=useState([]);
     const [popular, setPopular]=useState([]);
     const [top, setTop]=useState([]);
-    const tes = useHorizontalScroll();
-    const tes1 = useHorizontalScroll();
-    const tes2 = useHorizontalScroll();
+
+    const scrollMov = useHorizontalScroll();
+    const scrollPop = useHorizontalScroll();
+    const scrollTop = useHorizontalScroll();
 
     useEffect(() => {
       
@@ -58,29 +58,13 @@ export default function ListMovie() {
         
       }, [])
 
-      // if(movie.length === 0){
-      //   return(
-      //       <>
-      //       <div className='row-header-skeleton'></div>
-      //     <div className='row-cards'>
-      //      {Array(10).fill().map((data,index)=>{ return(
-      //       <Link to={'/'} className='btn-movie' key={index}>
-      //        <div key={index} className='movie-card-skeleton'></div>
-      //       </Link>
-      //     )
-      //     })}
-      //     </div>
-      //     </>
-      //   )
-      // }
-
-  
   return (   
-        <>     
+        <>   
+
          {loading?(<div className='row-header-skeleton'></div>):(
           <h2 className='row-header'>No Cinema</h2>
          )}
-          <div className='row-cards' ref={tes}>
+          <div className='row-cards' ref={scrollMov}>
     
           {loading ?(<>
             {Array(10).fill().map((data,index)=>{ return(
@@ -109,7 +93,7 @@ export default function ListMovie() {
           {loading?(<div className='row-header-skeleton'></div>):(
           <h2 className='row-header'>Popular</h2>
          )}
-          <div className='row-cards' ref={tes1}>
+          <div className='row-cards' ref={scrollPop}>
     
     {loading ?(<>
       {Array(10).fill().map((data,index)=>{ return(
@@ -137,7 +121,7 @@ export default function ListMovie() {
     {loading?(<div className='row-header-skeleton'></div>):(
           <h2 className='row-header'>Bem-Avaliados</h2>
          )}
-    <div className='row-cards' ref={tes2}>
+    <div className='row-cards' ref={scrollTop}>
     
     {loading ?(<>
       {Array(10).fill().map((data,index)=>{ return(

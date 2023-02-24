@@ -44,7 +44,6 @@ padding-left: 10px;
     background-color:var(--red-900) ;
 }
 .nav-container-black {
-    /* background-color: #111; */
     background-color: var(--gray-300);
 }
 @media (max-width:660px){

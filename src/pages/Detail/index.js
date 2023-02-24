@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './index.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
-import Header from '../../components/Header';
+import BannerHome from '../../components/BannerHome';
 import ListActors from '../../components/ListActors';
 import { useHorizontalScroll } from '../../utils/scrollHorizontal';
 import { FaYoutube, FaRegBookmark, FaBookmark} from  'react-icons/fa';
@@ -15,11 +15,11 @@ export default function Detail() {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [genres, setGenres] = useState([]);
-    const[favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState(false);
 
     const { id } = useParams();
     const navigate = useNavigate();
-    const tes = useHorizontalScroll();
+    const scrollActors = useHorizontalScroll();
 
     useEffect(()=>{
         async function loadDetail(){
@@ -37,37 +37,38 @@ export default function Detail() {
             const isFavorite = hasMovie(response.data)
            
             setFavorite(isFavorite);
-           
         }
 
         loadDetail();
 
     },[id])
 
-    // if(data.length === 0){
-    //   return(
-    //   // <div className='container-home'>
-    //   //   <div className='header-skeleton'></div>
-
-    //   //   <div className='container-skeleton'>
-    //   //   <div className='title-skeleton'></div>
-    //   //     <div className='sinopse-skeleton'></div>
-    //   //   </div>
-    //   // </div>
-    // )
-    // }
-
-   function handleSave(){
+    function handleSave(){
       saveMovie('@movies', data)
       navigate('/',{replace: true})
    }
  
+
+    // if(data.length === 0){
+    //   return(
+    //   <div className='container-home'>
+    //     <div className='header-skeleton'></div>
+
+    //     <div className='container-skeleton'>
+    //     <div className='title-skeleton'></div>
+    //       <div className='sinopse-skeleton'></div>
+    //     </div>
+    //   </div>
+    // )
+    // }
+
+
    
  return (
   
    <div className='container-detail'> 
 
-      <Header data={data}/>
+      <BannerHome data={data}/>
        <div className='container'>
        
       <div className='container-title'>
@@ -113,7 +114,7 @@ export default function Detail() {
                   
             <h1> Atores</h1> 
       
-            <div className='row-actors' ref={tes}>
+            <div className='row-actors' ref={scrollActors}>
                   <ListActors data={id}/>
            </div> 
     </div> 

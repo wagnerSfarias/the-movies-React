@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from 'react';
 import api from '../../services/api';
+import { baseImg } from '../../services/api';
 import './index.css';
 import { getListMovies } from '../../utils/movie';
-const baseImg = 'https://image.tmdb.org/t/p/original/';
 
 export default function ListActors({data}) {
   const [person, setPerson] = useState(false);
@@ -31,7 +31,8 @@ export default function ListActors({data}) {
   <>
         
     {person?.map((per,index) => {
-      return (<div className='container-actors'key={index} >
+      return (
+      <div className='container-actors' key={index}>
            {per.profile_path === null ? 
                 ( <img className='img-actor'
                           src={'https://letrasjuridicas.com.br/product_images/AuthorDefaultImage.png'}

@@ -1,8 +1,8 @@
 import React from 'react';
 import './index.css';
-const baseImg = 'https://image.tmdb.org/t/p/original/';
+import { baseImg } from '../../services/api';
 
-export default function Header({data}) {
+export default function BannerHome({data}) {
  return (
         <div className='header' style={{
             backgroundSize:'cover',
