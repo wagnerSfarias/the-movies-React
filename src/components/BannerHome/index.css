@@ -1,16 +1,16 @@
-
-.header{
+.header {
     height: 480px;
     object-fit: contain;
 }
 
-@media (max-width:660px){
-    .header{
+@media (max-width:660px) {
+    .header {
         height: 350px;
     }
 }
-@media (max-width:470px){
-    .header{
+
+@media (max-width:470px) {
+    .header {
         height: 280px;
     }
 }

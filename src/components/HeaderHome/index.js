@@ -17,14 +17,12 @@ export default function HeaderHome() {
     <div className={`nav-container ${show && "nav-container-black"}`}>
       <div className='logo'><p className='text-logo'>THE</p><p className='text-movie'>MOVIES</p></div>
 
-
       <Link to={'/mylist'}>
         <div className='my-list'>
           <FaBars size={30} />
           <p className='text-list'>Minha Lista</p>
         </div>
       </Link>
-
 
     </div>
   );

@@ -137,7 +137,7 @@ p {
     .container {
         max-width: 650px;
     }
-   
+
     h1 {
         font-size: 28px;
         font-weight: 600;
@@ -161,6 +161,7 @@ p {
     .svg-save {
         font-size: 30px;
     }
+
     .container-skeleton {
         max-width: 650px;
     }
@@ -170,13 +171,16 @@ p {
     .container {
         max-width: 460px;
     }
+
     .container-skeleton {
         max-width: 460px;
     }
+
     .sinopse-skeleton {
         max-width: 400px;
         height: 200px;
     }
+
     h1 {
         font-size: 22px;
         font-weight: 600;
@@ -264,9 +268,11 @@ p {
         padding: 15px 10px;
         margin-left: 5px;
     }
+
     .container-skeleton {
         max-width: 290px;
     }
+
     .sinopse-skeleton {
         max-width: 250px;
         height: 180px;

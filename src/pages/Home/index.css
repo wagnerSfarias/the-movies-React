@@ -1,91 +1,99 @@
-.container-home{
+.container-home {
     color: var(--white);
-    padding-bottom: 20px;  
+    padding-bottom: 20px;
 }
-.header{
+
+.header {
     color: var(--white);
     object-fit: contain;
     max-height: 548px;
     display: flex;
     padding-bottom: 10px;
-    align-items:flex-end;
+    align-items: flex-end;
 }
 
-.banner-content{
+.banner-content {
     background-color: var(--gray-200);
     margin-left: 30px;
     padding: 0 10px;
     border-radius: 5px;
     border-left: 5px solid var(--white);
 }
-.banner-title{
+
+.banner-title {
     font-size: 3rem;
     font-weight: 800;
     padding-bottom: 0.3rem;
 }
-.header-skeleton{
+
+.header-skeleton {
     height: 480px;
     display: flex;
     padding-bottom: 10px;
-    align-items:flex-end;
+    align-items: flex-end;
     background-color: var(--gray-100);
 }
-.banner-content-skeleton{
+
+.banner-content-skeleton {
     background-color: var(--gray-200);
     margin-left: 30px;
     padding: 20px;
     border-radius: 5px;
     border-left: 5px solid var(--white);
-    width:300px;
-    height:90px;
+    width: 300px;
+    height: 90px;
 }
-.banner-title-skeleton{
-    background-color:rgba(173, 165, 165, 0.7);
+
+.banner-title-skeleton {
+    background-color: rgba(173, 165, 165, 0.7);
     height: 100%;
 }
 
 
-@media (max-width:660px){
-    .banner-content{
+@media (max-width:660px) {
+    .banner-content {
         margin-left: 20px;
         padding: 0 5px;
     }
-    .banner-title{
+
+    .banner-title {
         font-size: 2rem;
         font-weight: 600;
         width: 100%;
     }
-    .header-skeleton{
+
+    .header-skeleton {
         height: 350px;
     }
-    .banner-content-skeleton{
+
+    .banner-content-skeleton {
         margin-left: 20px;
         padding: 15px;
-        width:250px;
-        height:70px;
+        width: 250px;
+        height: 70px;
     }
-   
+
 }
-@media (max-width:470px){
-    .banner-content{
+
+@media (max-width:470px) {
+    .banner-content {
         margin-left: 10px;
         padding: 0 5px;
     }
-    .banner-title{
+
+    .banner-title {
         font-size: 1.3rem;
         font-weight: 600;
     }
-    .header-skeleton{
+
+    .header-skeleton {
         height: 280px;
     }
-    .banner-content-skeleton{
+
+    .banner-content-skeleton {
         margin-left: 10px;
         padding: 8px;
-        width:200px;
-        height:50px;
+        width: 200px;
+        height: 50px;
     }
 }
-
-
-
-

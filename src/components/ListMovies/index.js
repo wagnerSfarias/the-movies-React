@@ -7,150 +7,153 @@ import { getListMovies } from '../../utils/movie';
 import './index.css';
 
 export default function ListMovie() {
-    const [loading, setLoading] = useState(true)
-    const [movie, setMovie]=useState([]);
-    const [popular, setPopular]=useState([]);
-    const [top, setTop]=useState([]);
+  const [loading, setLoading] = useState(true)
+  const [movie, setMovie] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [top, setTop] = useState([]);
 
-    const scrollMov = useHorizontalScroll();
-    const scrollPop = useHorizontalScroll();
-    const scrollTop = useHorizontalScroll();
+  const scrollMov = useHorizontalScroll();
+  const scrollPop = useHorizontalScroll();
+  const scrollTop = useHorizontalScroll();
 
-    useEffect(() => {
-      
-        async function getMovies() {
-         
-            const [nowData, popularData, topData] = await Promise.all([
-                api.get('/movie/now_playing',{
-                    params:{
-                      api_key: process.env.REACT_APP_API_KEY,
-                      language:'pt-BR',
-                      page:1
-                    }
-                  }),
-                  api.get('/movie/popular',{
-                    params:{
-                      api_key: process.env.REACT_APP_API_KEY,
-                      language:'pt-BR',
-                      page:1
-                    }
-                  }),
-                  api.get('/movie/top_rated',{
-                    params:{
-                      api_key: process.env.REACT_APP_API_KEY,
-                      language:'pt-BR',
-                      page:1
-                    }
-                  }),
-              ])
+  useEffect(() => {
 
-              const nowList = getListMovies(15, nowData.data.results);
-              const popularList = getListMovies(15, popularData.data.results);
-              const topList = getListMovies(10, topData.data.results);
-              
-              setMovie(nowList);
-              setPopular(popularList);
-              setTop(topList);
-              setLoading(false);
-        }
-    
-        getMovies();
-        
-      }, [])
+    async function getMovies() {
 
-  return (   
-        <>   
+      const [nowData, popularData, topData] = await Promise.all([
+        api.get('/movie/now_playing', {
+          params: {
+            api_key: process.env.REACT_APP_API_KEY,
+            language: 'pt-BR',
+            page: 1
+          }
+        }),
+        api.get('/movie/popular', {
+          params: {
+            api_key: process.env.REACT_APP_API_KEY,
+            language: 'pt-BR',
+            page: 1
+          }
+        }),
+        api.get('/movie/top_rated', {
+          params: {
+            api_key: process.env.REACT_APP_API_KEY,
+            language: 'pt-BR',
+            page: 1
+          }
+        }),
+      ])
 
-         {loading?(<div className='row-header-skeleton'></div>):(
-          <h2 className='row-header'>No Cinema</h2>
-         )}
-          <div className='row-cards' ref={scrollMov}>
-    
-          {loading ?(<>
-            {Array(10).fill().map((data,index)=>{ return(
-                  <Link to={'/'} className='btn-movie' key={index}>
-                   <div key={index} className='movie-card-skeleton'></div>
-                  </Link>
-                )
-                })}
-    
-          </>):(<>
-    
-                {movie?.map(movie => {
-                    return (
-                      <Link  to={`/detail/${movie.id}`} className='btn-movie'
-                     key={movie.id}>
-                     <img className='movie-card'
-                       src={movie.poster_path?`${baseImg}${movie.poster_path}`:'null'}
-                       alt={movie.name} />
-                       </Link>
-                    )
-                    })
-                   }           
-          </>)}
-    
-          </div>
-          {loading?(<div className='row-header-skeleton'></div>):(
-          <h2 className='row-header'>Popular</h2>
-         )}
-          <div className='row-cards' ref={scrollPop}>
-    
-    {loading ?(<>
-      {Array(10).fill().map((data,index)=>{ return(
-            <Link to={'/'} className='btn-movie' key={index}>
-             <div key={index} className='movie-card-skeleton'></div>
-            </Link>
-          )
+      const nowList = getListMovies(15, nowData.data.results);
+      const popularList = getListMovies(15, popularData.data.results);
+      const topList = getListMovies(10, topData.data.results);
+
+      setMovie(nowList);
+      setPopular(popularList);
+      setTop(topList);
+      setLoading(false);
+    }
+
+    getMovies();
+
+  }, [])
+
+  return (
+    <>
+
+      {loading ? (<div className='row-header-skeleton'></div>) : (
+        <h2 className='row-header'>No Cinema</h2>
+      )}
+      <div className='row-cards' ref={scrollMov}>
+
+        {loading ? (<>
+          {Array(10).fill().map((data, index) => {
+            return (
+              <Link to={'/'} className='btn-movie' key={index}>
+                <div key={index} className='movie-card-skeleton'></div>
+              </Link>
+            )
           })}
 
-    </>):(<>
+        </>) : (<>
+
+          {movie?.map(movie => {
+            return (
+              <Link to={`/detail/${movie.id}`} className='btn-movie'
+                key={movie.id}>
+                <img className='movie-card'
+                  src={movie.poster_path ? `${baseImg}${movie.poster_path}` : 'null'}
+                  alt={movie.name} />
+              </Link>
+            )
+          })
+          }
+        </>)}
+
+      </div>
+      {loading ? (<div className='row-header-skeleton'></div>) : (
+        <h2 className='row-header'>Popular</h2>
+      )}
+      <div className='row-cards' ref={scrollPop}>
+
+        {loading ? (<>
+          {Array(10).fill().map((data, index) => {
+            return (
+              <Link to={'/'} className='btn-movie' key={index}>
+                <div key={index} className='movie-card-skeleton'></div>
+              </Link>
+            )
+          })}
+
+        </>) : (<>
           {popular?.map(movie => {
-              return (
-                <Link  to={`/detail/${movie.id}`} className='btn-movie'
-               key={movie.id}>
-               <img className='movie-card'
-                 src={movie.poster_path?`${baseImg}${movie.poster_path}`:'null'}
-                 alt={movie.name} />
-                 </Link>
-              )
-              })
-             } 
-    </>)}
+            return (
+              <Link to={`/detail/${movie.id}`} className='btn-movie'
+                key={movie.id}>
+                <img className='movie-card'
+                  src={movie.poster_path ? `${baseImg}${movie.poster_path}` : 'null'}
+                  alt={movie.name} />
+              </Link>
+            )
+          })
+          }
+        </>)}
 
-    </div>
-    {loading?(<div className='row-header-skeleton'></div>):(
-          <h2 className='row-header'>Bem-Avaliados</h2>
-         )}
-    <div className='row-cards' ref={scrollTop}>
-    
-    {loading ?(<>
-      {Array(10).fill().map((data,index)=>{ return(
-            <Link to={'/'} className='btn-movie' key={index}>
-             <div key={index} className='movie-card-skeleton'></div>
-            </Link>
-          )
+      </div>
+      {loading ? (<div className='row-header-skeleton'></div>) : (
+        <h2 className='row-header'>Bem-Avaliados</h2>
+      )}
+      <div className='row-cards' ref={scrollTop}>
+
+        {loading ? (<>
+          {Array(10).fill().map((data, index) => {
+            return (
+              <Link to={'/'} className='btn-movie' key={index}>
+                <div key={index} className='movie-card-skeleton'></div>
+              </Link>
+            )
           })}
 
-    </>):(<>
-  
-          {top?.map(movie => {
-              return (
-                <Link  to={`/detail/${movie.id}`} className='btn-movie'
-               key={movie.id}>
-               <img className='movie-card'
-                 src={movie.poster_path?`${baseImg}${movie.poster_path}`:'null'}
-                 alt={movie.name} />
-                 </Link>
-              )
-              })
-             }
-        
-    </>)}
+        </>) : (<>
 
-    </div>
-          
-</>
-    
+          {top?.map(movie => {
+            return (
+              <Link to={`/detail/${movie.id}`} className='btn-movie'
+                key={movie.id}>
+                <img className='movie-card'
+                  src={movie.poster_path ? `${baseImg}${movie.poster_path}` : 'null'}
+                  alt={movie.name} />
+              </Link>
+            )
+          })
+          }
+
+        </>)}
+
+      </div>
+
+    </>
+
   );
 
 }

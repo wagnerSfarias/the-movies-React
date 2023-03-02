@@ -8,9 +8,7 @@ export default function Favorite() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-
         setMovies(getMoviesSave('@movies'))
-
     }, [])
 
     function handleDelete(id) {

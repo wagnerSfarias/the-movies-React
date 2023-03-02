@@ -16,10 +16,10 @@ export default function Home() {
 
       window.scrollTo(0, 0);
       const response = await api.get(`/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR`)
-      if(isActive) {
+      if (isActive) {
         const data = response.data?.results;
         const random = Math.floor(Math.random() * data.length)
-        
+
         setMovie(data[random]);
         setLoading(false);
       }
@@ -44,26 +44,26 @@ export default function Home() {
         </div>
       ) : (
 
-        <Link  to={`/detail/${movie.id}`}>
-        <div className='header'
-          style={{
-            backgroundSize: 'cover',
-            backgroundImage: `url(${movie?.backdrop_path ? `${baseImg}${movie?.backdrop_path}` : "Another Image Link"})`,
-            backgroundPosition: 'center-center'
-          }}
-        >
+        <Link to={`/detail/${movie.id}`}>
+          <div className='header'
+            style={{
+              backgroundSize: 'cover',
+              backgroundImage: `url(${movie?.backdrop_path ? `${baseImg}${movie?.backdrop_path}` : "Another Image Link"})`,
+              backgroundPosition: 'center-center'
+            }}
+          >
 
-          <div className='banner-content'>
-            <h1 className='banner-title'>
-              {movie?.title || movie?.name || movie?.original_name}
-            </h1>
+            <div className='banner-content'>
+              <h1 className='banner-title'>
+                {movie?.title || movie?.name || movie?.original_name}
+              </h1>
+            </div>
+
           </div>
-
-        </div>
         </Link>
       )}
 
-          <ListMovie/>
+      <ListMovie />
 
     </div>
   );
