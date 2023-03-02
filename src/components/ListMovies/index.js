@@ -23,21 +23,21 @@ export default function ListMovie() {
             const [nowData, popularData, topData] = await Promise.all([
                 api.get('/movie/now_playing',{
                     params:{
-                      api_key: process.env.REACT_APP_API_KEY,
+                      api_key: 5bf5177de87a5166f67da9c486e2b2cb,
                       language:'pt-BR',
                       page:1
                     }
                   }),
                   api.get('/movie/popular',{
                     params:{
-                      api_key: process.env.REACT_APP_API_KEY,
+                      api_key: '5bf5177de87a5166f67da9c486e2b2cb',
                       language:'pt-BR',
                       page:1
                     }
                   }),
                   api.get('/movie/top_rated',{
                     params:{
-                      api_key: process.env.REACT_APP_API_KEY,
+                      api_key: 5bf5177de87a5166f67da9c486e2b2cb,
                       language:'pt-BR',
                       page:1
                     }
