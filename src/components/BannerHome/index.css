@@ -3,9 +3,35 @@
     object-fit: contain;
 }
 
+.btn-left {
+    display: none;
+}
+
+.svg-save {
+    font-size: 40px;
+}
+
 @media (max-width:660px) {
     .header {
         height: 350px;
+    }
+
+    .btn-left {
+        position: absolute;
+        top: 3%;
+        left: 3%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: rgb(26, 25, 25);
+        border: 2px solid var(--red-900);
+    }
+
+    .svg-save {
+        font-size: 20px;
     }
 }
 

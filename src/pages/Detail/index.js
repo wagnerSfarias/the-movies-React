@@ -49,26 +49,12 @@ export default function Detail() {
   }
 
 
-  // if(data.length === 0){
-  //   return(
-  //   <div className='container-home'>
-  //     <div className='header-skeleton'></div>
-
-  //     <div className='container-skeleton'>
-  //     <div className='title-skeleton'></div>
-  //       <div className='sinopse-skeleton'></div>
-  //     </div>
-  //   </div>
-  // )
-  // }
-
-
-
   return (
 
     <div className='container-detail'>
 
       <BannerHome data={data} />
+
       <div className='container'>
 
         <div className='container-title'>
