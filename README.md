@@ -6,6 +6,8 @@ Construí esse projeto com ReactJS totalmente responsivo que tem o objetivo de e
 As informações dos filmes foram consumidas da API theMovieDB.<br>
 [Documentação da api](https://www.themoviedb.org/documentation/api?language=pt-BR)
 
+[Link site](https://react-themovies.netlify.app)
+
 
 <h2>Layout 🖥️</h2>
 <img width="600" src="https://github.com/wagnerSfarias/the-movies-React/blob/main/src/assets/home.png?raw=true">
