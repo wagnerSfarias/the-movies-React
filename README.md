@@ -2,7 +2,7 @@
 <h1 align="center">The Movies</h1>
 
 ## Sobre 
-Construí esse projeto com ReactJS totalmente responsivo que tem o objetivo de exibir listas de filmes que estão em cartaz no cinema, filmes populares e bem avaliados, também é possível ver as informações de cada filme e favoritar os filmes de seu interesse. <br>
+Construí esse projeto com ReactJS totalmente responsivo que tem o objetivo de exibir listas de filmes que estão em cartaz no cinema, filmes populares e bem avaliados, também é possível ver as informações de cada filme e favoritar os filmes de seu interesse que são armazenados no local storage do navegador. <br>
 As informações dos filmes foram consumidas da API theMovieDB.<br>
 
 <a href="https://www.themoviedb.org/documentation/api?language=pt-BR" target="_blank" >Documentação da api 📖</a>
