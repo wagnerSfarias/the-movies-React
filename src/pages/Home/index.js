@@ -20,7 +20,7 @@ export default function Home() {
         const data = response.data?.results;
         const random = Math.floor(Math.random() * data.length)
 
-        setMovie(data[random]);
+        setMovie(data[random])
         setLoading(false);
       }
 
@@ -47,9 +47,7 @@ export default function Home() {
         <Link to={`/detail/${movie.id}`}>
           <div className='header'
             style={{
-              backgroundSize: 'cover',
               backgroundImage: `url(${movie?.backdrop_path ? `${baseImg}${movie?.backdrop_path}` : "Another Image Link"})`,
-              backgroundPosition: 'center-center'
             }}
           >
 
