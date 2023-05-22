@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FaBookmark } from 'react-icons/fa';
+import { FaBookmark, FaArrowLeft } from 'react-icons/fa';
 import { baseImg } from '../../services/api';
+import { Link } from 'react-router-dom';
 import './index.css';
 import { getMoviesSave, deleteMovie } from '../../utils/localStorage';
 
@@ -18,6 +19,9 @@ export default function Favorite() {
     return (
 
         <div className='container-favorite'>
+             <Link to={'/'} className='btn-left'>
+                <FaArrowLeft />
+            </Link>
             <div className='container'>
                 <h1> Meus Filmes Favoritos</h1>
                 {movies.map((movie) => {
