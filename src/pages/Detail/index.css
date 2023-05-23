@@ -22,6 +22,7 @@ h1 {
     font-size: 36px;
     text-align: center;
     font-weight: 800;
+    color: var(--white);
 }
 
 p {
@@ -116,7 +117,10 @@ p {
     color: var(--white);
     border: 6px solid var(--gray-100);
 }
-
+.warn-skeleton{
+    padding-top: 15%;
+    margin: 0 auto;
+}
 .title-skeleton {
     background-color: var(--gray-100);
     width: 200px;
@@ -186,7 +190,10 @@ p {
         font-weight: 600;
         width: 80%;
     }
-
+    .icon:hover{
+        transform: none;
+        color: (var(--white));
+    }
     .container-icon {
         width: 40px;
         height: 40px;
@@ -231,6 +238,7 @@ p {
     .container {
         max-width: 325px;
         padding: 2rem 1rem;
+      
     }
 
     .container-icon {
