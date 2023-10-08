@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { baseImg } from '../../services/api';
-import './index.css';
+import { ContainerActors, NameActor } from './styles';
 import { getListMovies } from '../../utils/movie';
 
 export default function ListActors({ data }) {
@@ -31,20 +31,20 @@ export default function ListActors({ data }) {
 
       {person?.map((per, index) => {
         return (
-          <div className='container-actors' key={index}>
+          <ContainerActors key={index}>
             {per.profile_path === null ?
-              (<img className='img-actor'
+              (<img
                 src={'https://letrasjuridicas.com.br/product_images/AuthorDefaultImage.png'}
                 alt={per?.name}
               />) : (
-                <img className='img-actor'
+                <img
                   src={`${baseImg}${per?.profile_path}`}
                   alt={per?.name}
                   key={index} />
               )}
-            <p className='name-actor' key={per.id} >{per?.name}</p>
-            <p className='character'>{per?.character}</p>
-          </div>
+            <NameActor key={per.id} >{per?.name}</NameActor>
+            <p>{per?.character}</p>
+          </ContainerActors>
         )
       })}
     </>

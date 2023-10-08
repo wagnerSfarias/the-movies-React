@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';
+import {Header, Logo, TextThe, TextMovie, BtnFavorite } from './styles';
 import { FaBars } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 
 export default function HeaderHome() {
   const [show, setShow] = useState(false);
@@ -14,16 +13,17 @@ export default function HeaderHome() {
   }, [])
 
   return (
-    <div className={`nav-container ${show && "nav-container-black"}`}>
-      <div className='logo'><p className='text-logo'>THE</p><p className='text-movie'>MOVIES</p></div>
+    <Header scroll={show}>
+      <Logo>
+        <TextThe>THE</TextThe>
+        <TextMovie>MOVIES</TextMovie>
+      </Logo>
 
-      <Link to={'/mylist'}>
-        <div className='my-list'>
+      <BtnFavorite to={'/mylist'}>
           <FaBars size={30} />
-          <p className='text-list'>Minha Lista</p>
-        </div>
-      </Link>
+          <p>Minha Lista</p>
+      </BtnFavorite>
 
-    </div>
+    </Header>
   );
 }

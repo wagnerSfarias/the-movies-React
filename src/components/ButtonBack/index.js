@@ -1,12 +1,11 @@
 import React from 'react';
-import './index.css'
-import { Link } from 'react-router-dom';
+import { Button } from './styles'
 import { FaArrowLeft } from 'react-icons/fa';
 
 export default function ButtonBack() {
     return (
-            <Link to={'/'} className='btn-left'>
+            <Button to={'/'} >
                 <FaArrowLeft />
-            </Link>
+            </Button>
     );
 }
