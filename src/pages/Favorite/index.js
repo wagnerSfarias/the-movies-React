@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { FaBookmark } from 'react-icons/fa';
 import { baseImg } from '../../services/api';
-import './index.css';
+import { ContainerFavorite, ContainerMovie } from './styles'
 import { getMoviesSave, deleteMovie } from '../../utils/localStorage';
 import ButtonBack from '../../components/ButtonBack';
+import { Container, ContainerIcon } from '../Detail/styles';
 
 export default function Favorite() {
     const [movies, setMovies] = useState([]);
@@ -17,34 +18,26 @@ export default function Favorite() {
     }
 
     return (
-
-        <div className='container-favorite'>
+        <ContainerFavorite>
              <ButtonBack/>
-            <div className='container'>
+            <Container>
                 <h1> Meus Filmes Favoritos</h1>
                 {movies.map((movie) => {
                     return (
-                        <div key={movie.id} className='container-movie'>
-
+                        <ContainerMovie key={movie.id}>
                             <img
                                 src={movie.poster_path ? `${baseImg}${movie.poster_path}` : 'null'}
                                 alt={movie.name} />
                             <div>
                                 <p>{movie.title}</p>
-                                <div className='container-icon' onClick={() => handleDelete(movie.id)}>
-                                    <div className='icon-save'>
-                                        <FaBookmark className='svg-save' /></div>
-                                </div>
+                                <ContainerIcon onClick={() => handleDelete(movie.id)}>
+                                        <FaBookmark/>
+                                </ContainerIcon>
                             </div>
-
-                        </div>
+                        </ContainerMovie>
                     )
                 })}
-
-
-            </div>
-
-        </div>
-
+            </Container>
+        </ContainerFavorite>
     );
 }

@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';
+import { 
+  Container, 
+  ContainerBanner, 
+  BannerContent, 
+  ContainerSkeleton, 
+  BannerSkeleton, 
+  TitleSkeleton
+} from './styles'
+
 import api from '../../services/api';
 import { baseImg } from '../../services/api';
 import HeaderHome from '../../components/HeaderHome';
@@ -34,36 +42,33 @@ export default function Home() {
 
 
   return (
-    <div className='container-home'>
+    <Container>
       <HeaderHome />
       {loading ? (
-        <div className='header-skeleton'>
-          <div className='banner-content-skeleton'>
-            <div className='banner-title-skeleton'></div>
-          </div>
-        </div>
+        <ContainerSkeleton>
+          <BannerSkeleton>
+            <TitleSkeleton></TitleSkeleton>
+          </BannerSkeleton>
+        </ContainerSkeleton>
       ) : (
 
         <Link to={`/detail/${movie.id}`}>
-          <div className='header'
+          <ContainerBanner
             style={{
               backgroundImage: `url(${movie?.backdrop_path ? `${baseImg}${movie?.backdrop_path}` : "Another Image Link"})`,
-            }}
-          >
+            }}>
 
-            <div className='banner-content'>
-              <h1 className='banner-title'>
+            <BannerContent>
+              <h1>
                 {movie?.title || movie?.name || movie?.original_name}
               </h1>
-            </div>
-
-          </div>
+            </BannerContent>
+          </ContainerBanner>
         </Link>
       )}
 
       <ListMovie />
-
-    </div>
+    </Container>
   );
 }
 

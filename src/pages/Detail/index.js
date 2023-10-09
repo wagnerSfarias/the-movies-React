@@ -1,5 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import './index.css';
+import {
+   ContainerDetail,
+   Container,
+   ContainerTitle,
+   Sinopse,
+   Description,
+   Trailer,
+   ContainerIcon,
+   ContainerGenres,
+   Genres,
+   RowActors,
+   ContainerSkeleton,
+   WarnSkeleton,
+   TitleSkeleton,
+   SinopseSkeleton
+  } from './styles';
+
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import BannerDetail from '../../components/BannerDetail';
@@ -42,7 +58,6 @@ export default function Detail() {
           setFavorite(isFavorite);
 
         }).catch((err) => {
-          // console.log('eroor', err)
           setLoading(false)
           return;
         })
@@ -60,25 +75,25 @@ export default function Detail() {
 
   return (<>
     {loading ? (
-      <div className='container-detail'>
+      <ContainerDetail>
 
         <BannerDetail data={data} />
 
-        <div className='container'>
+        <Container>
 
-          <div className='container-title'>
+          <ContainerTitle>
             <h1> {data?.title}</h1>
-            <div className='container-icon' onClick={handleSave}>
+            <ContainerIcon onClick={handleSave}>
 
-              {favorite ? (<FaBookmark className='svg-save' />) : (
-                <FaRegBookmark className='svg-save' />
+              {favorite ? (<FaBookmark />) : (
+                <FaRegBookmark />
               )}
 
-            </div>
-          </div>
+            </ContainerIcon>
+          </ContainerTitle>
 
-          <p className='sinopse'> {data?.overview}</p>
-          <div className='container-description'>
+          <Sinopse> {data?.overview}</Sinopse>
+          <Description>
             <div>
               <p>Lançado: {date}</p>
               <p>Duração: {time}</p>
@@ -87,43 +102,42 @@ export default function Detail() {
 
             <a target='blank' href={`https://youtube.com/results?search_query=${data.title} Trailer`}>
 
-              <div className='trailer'>
-
+              <Trailer>
                 <p >Trailer</p>
-                <FaYoutube size={40} className='icon' />
-              </div>
+                <FaYoutube/>
+              </Trailer>
 
             </a>
 
-          </div>
+          </Description>
 
-          <div className='container-genres'>
+          <ContainerGenres>
             {genres.map(genres => {
               return (
-                <div className='genres' key={genres.id}>
+                <Genres key={genres.id}>
                   <p>{genres.name}</p>
-                </div>
+                </Genres>
               )
             })
             }
-          </div>
+          </ContainerGenres>
 
           <h1> Atores</h1>
 
-          <div className='row-actors' ref={scrollActors}>
+          <RowActors ref={scrollActors}>
             <ListActors data={id} />
-          </div>
-        </div>
-      </div>) : (
+          </RowActors>
+        </Container>
+      </ContainerDetail>) : (
 
-      <div className='container-detail'>
+      <ContainerDetail>
         <ButtonBack />
-        <h1 className='warn-skeleton'>Os detalhes do filme, não foram encontrados !</h1>
-        <div className='container-skeleton'>
-          <div className='title-skeleton'></div>
-          <div className='sinopse-skeleton'></div>
-        </div>
-      </div>
+        <WarnSkeleton>Os detalhes do filme, não foram encontrados !</WarnSkeleton>
+        <ContainerSkeleton>
+          <TitleSkeleton></TitleSkeleton>
+          <SinopseSkeleton></SinopseSkeleton>
+        </ContainerSkeleton>
+      </ContainerDetail>
     )}
 
   </>
