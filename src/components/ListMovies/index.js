@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { RowCards, SubTitle, BtnMovie, SubTitleSkeleton, MovieCardSkeleton } from './styles';
 import api from '../../services/api';
-import { baseImg } from '../../services/api';
-import { useHorizontalScroll } from '../../utils/scrollHorizontal';
 import { getListMovies } from '../../utils/movie';
-
+import CarrosuelMovies from '../CarrosuelMovies';
 
 export default function ListMovie() {
   const [loading, setLoading] = useState(true)
   const [movie, setMovie] = useState([]);
   const [popular, setPopular] = useState([]);
   const [top, setTop] = useState([]);
-
-  const scrollMov = useHorizontalScroll();
-  const scrollPop = useHorizontalScroll();
-  const scrollTop = useHorizontalScroll();
 
   useEffect(() => {
 
@@ -60,101 +53,9 @@ export default function ListMovie() {
 
   return (
     <>
-
-      {loading ?
-        (<SubTitleSkeleton></SubTitleSkeleton>) :
-        (
-          <SubTitle>No Cinema</SubTitle>
-        )}
-      <RowCards ref={scrollMov}>
-
-        {loading ? (<>
-          {Array(10).fill().map((data, index) => {
-            return (
-              <BtnMovie to={'/'} key={index}>
-                <MovieCardSkeleton key={index}></MovieCardSkeleton>
-              </BtnMovie>
-            )
-          })}
-
-        </>) : (<>
-
-          {movie?.map(movie => {
-            return (
-              <BtnMovie to={`/detail/${movie.id}`}
-                key={movie.id}>
-                <img src={movie.poster_path ? `${baseImg}${movie.poster_path}` : 'null'}
-                  alt={movie.name} />
-              </BtnMovie>
-            )
-          })
-          }
-        </>)}
-
-      </RowCards>
-      {loading ?
-        (<SubTitleSkeleton></SubTitleSkeleton>) :
-        (
-          <SubTitle>Popular</SubTitle>
-        )}
-      <RowCards ref={scrollPop}>
-
-        {loading ? (<>
-          {Array(10).fill().map((data, index) => {
-            return (
-              <BtnMovie to={'/'} key={index}>
-                <MovieCardSkeleton key={index}></MovieCardSkeleton>
-              </BtnMovie>
-            )
-          })}
-
-        </>) : (<>
-          {popular?.map(movie => {
-            return (
-              <BtnMovie to={`/detail/${movie.id}`}
-                key={movie.id}>
-                <img src={movie.poster_path ? `${baseImg}${movie.poster_path}` : 'null'}
-                  alt={movie.name} />
-              </BtnMovie>
-            )
-          })
-          }
-        </>)}
-
-      </RowCards>
-      {loading ?
-        (<SubTitleSkeleton></SubTitleSkeleton>) :
-        (
-          <SubTitle>Bem-Avaliados</SubTitle>
-        )}
-      <RowCards ref={scrollTop}>
-
-        {loading ? (<>
-          {Array(10).fill().map((data, index) => {
-            return (
-              <BtnMovie to={'/'} key={index}>
-                <MovieCardSkeleton key={index}></MovieCardSkeleton>
-              </BtnMovie>
-            )
-          })}
-
-        </>) : (<>
-
-          {top?.map(movie => {
-            return (
-              <BtnMovie to={`/detail/${movie.id}`}
-                key={movie.id}>
-                <img src={movie.poster_path ? `${baseImg}${movie.poster_path}` : 'null'}
-                  alt={movie.name} />
-              </BtnMovie>
-            )
-          })
-          }
-
-        </>)}
-
-      </RowCards>
-
+        <CarrosuelMovies loading={loading} title={'No Cinema'} data={movie}/>
+        <CarrosuelMovies loading={loading} title={'Popular'} data={popular}/>
+        <CarrosuelMovies loading={loading} title={'Bem-Avaliados'} data={top}/>
     </>
 
   );

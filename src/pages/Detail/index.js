@@ -9,7 +9,6 @@ import {
    ContainerIcon,
    ContainerGenres,
    Genres,
-   RowActors,
    ContainerSkeleton,
    WarnSkeleton,
    TitleSkeleton,
@@ -20,7 +19,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import BannerDetail from '../../components/BannerDetail';
 import ListActors from '../../components/ListActors';
-import { useHorizontalScroll } from '../../utils/scrollHorizontal';
 import { FaYoutube, FaRegBookmark, FaBookmark } from 'react-icons/fa';
 import { getTime } from '../../utils/time';
 import { hasMovie, saveMovie } from '../../utils/localStorage';
@@ -37,7 +35,6 @@ export default function Detail() {
 
   const { id } = useParams();
   const navigate = useNavigate();
-  const scrollActors = useHorizontalScroll();
 
   useEffect(() => {
     async function loadDetail() {
@@ -124,9 +121,8 @@ export default function Detail() {
 
           <h1> Atores</h1>
 
-          <RowActors ref={scrollActors}>
             <ListActors data={id} />
-          </RowActors>
+
         </Container>
       </ContainerDetail>) : (
 

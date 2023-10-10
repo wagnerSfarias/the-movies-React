@@ -166,25 +166,7 @@ export const Genres = styled.div`
     }
 
 `
-export const RowActors = styled.div`
-    display: flex;
-    overflow-x: auto;
-    padding: 20px;
-    margin-left: 20px;
 
-    ::-webkit-scrollbar {
-    display: none;
-    }
-
-    @media screen and (max-width:768px){
-       padding: 20px 10px;
-       margin-left: 10px;
-    }
-    @media screen and (max-width:480px){
-       padding: 15px 10px;
-       margin-left: 5px;
-    }
-`
 export const ContainerSkeleton = styled.div`
     max-width: 800px;
     margin: 2rem auto ;

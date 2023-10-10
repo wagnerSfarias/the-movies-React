@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
-export const RowCards = styled.div`
-    display: flex;
-    overflow-x: auto;
-    padding: 20px;
+export const Carosuel = styled.div`
     margin-left: 20px;
+    height: 340px;
+    padding: 1%;
+    flex-wrap: wrap;
+    overflow-x: auto;
 
     ::-webkit-scrollbar {
     display: none;
+    }
+
+    .swiper-wrapper{
+        display: flex;
     }
 
     @media screen and (max-width:768px){
@@ -33,19 +38,22 @@ export const BtnMovie = styled(Link)`
     img{
     object-fit: contain;
     max-height: 300px;
-    padding-left: 10px;
     transition: transform 450ms;
 
     &:hover{
     transform: scale(1.09);
     }
+}
 
-    @media screen and (max-width:768px){
-       max-width: 250px;
-       padding-left: 5px;
-    }
-    }
+@media screen and (max-width:768px){
+    max-width: 250px;
 
+    img{
+        &:hover{
+            transform: none;
+        }
+    }
+}
 `
 export const SubTitleSkeleton = styled.div`
     padding-top: 20px;
