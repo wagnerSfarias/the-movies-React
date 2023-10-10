@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+export const Carosuel = styled.div`
+    overflow-x: auto;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .swiper-wrapper{
+        display: flex;
+    }
+`
+
 export const ContainerActors = styled.div`
     max-height: 350px;
     margin: 0 5px;
@@ -7,7 +21,7 @@ export const ContainerActors = styled.div`
     img{
     max-height: 230px;
     width: 165px;
-    border-radius: 20%;
+    border-radius: 10%;
     object-fit: contain;
     }
 

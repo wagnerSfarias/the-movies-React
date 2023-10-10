@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { baseImg } from '../../services/api';
-import { ContainerActors, NameActor } from './styles';
+import { Carosuel, ContainerActors, NameActor } from './styles';
 import { getListMovies } from '../../utils/movie';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 
 export default function ListActors({ data }) {
   const [person, setPerson] = useState(false);
@@ -27,27 +29,34 @@ export default function ListActors({ data }) {
   }
 
   return (
-    <>
 
-      {person?.map((per, index) => {
-        return (
-          <ContainerActors key={index}>
-            {per.profile_path === null ?
-              (<img
-                src={'https://letrasjuridicas.com.br/product_images/AuthorDefaultImage.png'}
-                alt={per?.name}
-              />) : (
-                <img
-                  src={`${baseImg}${per?.profile_path}`}
-                  alt={per?.name}
-                  key={index} />
-              )}
-            <NameActor key={per.id} >{per?.name}</NameActor>
-            <p>{per?.character}</p>
-          </ContainerActors>
-        )
-      })}
-    </>
+      <Carosuel>
+        <Swiper
+          grabCursor
+          slidesPerView={'auto'}
+          spaceBetween={2} >
 
+          {person?.map((per, index) => (
+            <SwiperSlide key={index}>
+              <ContainerActors>
+                {per.profile_path === null ?
+                  (<img
+                    src={'https://letrasjuridicas.com.br/product_images/AuthorDefaultImage.png'}
+                    alt={per?.name}
+                  />) : (
+                    <img
+                      src={`${baseImg}${per?.profile_path}`}
+                      alt={per?.name}
+                      key={index} />
+                  )}
+                <NameActor key={per.id} >{per?.name}</NameActor>
+                <p>{per?.character}</p>
+              </ContainerActors>
+            </SwiperSlide>
+          )
+          )}
+        </Swiper>
+      </Carosuel>
+  
   );
 }
