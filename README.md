@@ -21,6 +21,8 @@ As informações dos filmes foram consumidas da API theMovieDB.<br>
 ## Tecnologias utilizadas 👨🏻‍💻
 - React
 - Axios
+- Styled-components
+- Swiper
 - React-Router-dom
 - React-Icons
 - React-toastify
