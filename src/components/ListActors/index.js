@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { baseImg } from '../../services/api';
-import { Carosuel, ContainerActors, NameActor } from './styles';
+import { ContainerActors, NameActor } from './styles';
 import { getListMovies } from '../../utils/movie';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import User from '../../assets/user.svg'
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
 
 
 export default function ListActors({ data }) {
@@ -29,34 +34,41 @@ export default function ListActors({ data }) {
   }
 
   return (
+    <>
+      <Swiper
+        grabCursor
+        pagination={true}
+        modules={[Pagination]}
+        breakpoints={{
+          280: {
+            slidesPerView: 2
+          },
+          600: {
+            slidesPerView: 3,
+            spaceBetween: 20
+          },
+          800: {
+            slidesPerView: 4,
+          }
+        }}>
 
-      <Carosuel>
-        <Swiper
-          grabCursor
-          slidesPerView={'auto'}
-          spaceBetween={2} >
-
-          {person?.map((per, index) => (
-            <SwiperSlide key={index}>
-              <ContainerActors>
-                {per.profile_path === null ?
-                  (<img
-                    src={'https://letrasjuridicas.com.br/product_images/AuthorDefaultImage.png'}
-                    alt={per?.name}
-                  />) : (
-                    <img
-                      src={`${baseImg}${per?.profile_path}`}
-                      alt={per?.name}
-                      key={index} />
-                  )}
-                <NameActor key={per.id} >{per?.name}</NameActor>
-                <p>{per?.character}</p>
-              </ContainerActors>
-            </SwiperSlide>
-          )
-          )}
-        </Swiper>
-      </Carosuel>
-  
+        {person?.map((per, index) => (
+          <SwiperSlide key={index}>
+            <ContainerActors>
+              {per.profile_path === null ?
+                (<img src={User} alt={per?.name}/>
+                ) : (
+                  <img
+                    src={`${baseImg}${per?.profile_path}`}
+                    alt={per?.name} />
+                )}
+              <NameActor key={per.id} >{per?.name}</NameActor>
+              <p>{per?.character}</p>
+            </ContainerActors>
+          </SwiperSlide>
+        )
+        )}
+      </Swiper>
+    </>
   );
 }
