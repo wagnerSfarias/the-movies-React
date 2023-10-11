@@ -9,6 +9,7 @@ import {
    ContainerIcon,
    ContainerGenres,
    Genres,
+   CarosuelActors,
    ContainerSkeleton,
    WarnSkeleton,
    TitleSkeleton,
@@ -121,8 +122,9 @@ export default function Detail() {
 
           <h1> Atores</h1>
 
+          <CarosuelActors>
             <ListActors data={id} />
-
+          </CarosuelActors>
         </Container>
       </ContainerDetail>) : (
 

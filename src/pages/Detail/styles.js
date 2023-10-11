@@ -58,6 +58,19 @@ export const Container = styled.div`
         }
 }
 `
+export const CarosuelActors = styled.div`
+    margin-top: 3%;
+   .swiper-pagination{
+     position: static;
+    }
+    .swiper-pagination-bullet{
+        background: var(--white);
+    }
+    .swiper-pagination-bullet-active {
+     background:var(--red-900);
+    }
+`
+
 export const ContainerTitle = styled.div`
    display: flex;
    justify-content: space-between;
@@ -101,6 +114,15 @@ export const Trailer = styled.div`
          transform: scale(1.30);
         }
     }
+@media screen and (max-width:768px){
+    
+    svg{
+        &:hover{
+            color: var(--white);
+            transform: none;
+        }
+    }
+}
 `
 export const ContainerIcon = styled.button`
     display: flex;
