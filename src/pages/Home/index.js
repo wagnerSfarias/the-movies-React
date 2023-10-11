@@ -24,7 +24,7 @@ export default function Home() {
     async function loadMovie() {
 
       window.scrollTo(0, 0);
-      const response = await api.get(`/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR`)
+      const response = await api.get(`/trending/movie/week?api_key=${process.env.REACT_APP_API_KEY}&language=pt-BR`)
       if (isActive) {
         const data = response.data?.results;
         const random = Math.floor(Math.random() * data.length)
