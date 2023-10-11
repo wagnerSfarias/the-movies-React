@@ -3,6 +3,7 @@ import {
   Container, 
   ContainerBanner, 
   BannerContent, 
+  ContainerMovies,
   ContainerSkeleton, 
   BannerSkeleton, 
   TitleSkeleton
@@ -66,8 +67,9 @@ export default function Home() {
           </ContainerBanner>
         </Link>
       )}
-
-      <ListMovie />
+        <ContainerMovies>
+           <ListMovie />
+        </ContainerMovies>
     </Container>
   );
 }

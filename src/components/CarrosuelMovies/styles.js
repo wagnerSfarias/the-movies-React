@@ -1,28 +1,10 @@
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
-export const Carosuel = styled.div`
-    margin-left: 20px;
-    height: 340px;
-    padding: 1%;
-    flex-wrap: wrap;
-    overflow-x: auto;
-
-    ::-webkit-scrollbar {
-    display: none;
-    }
-
-    .swiper-wrapper{
-        display: flex;
-    }
-
-    @media screen and (max-width:768px){
-        padding: 10px;
-    }
-`
 export const SubTitle = styled.h2`
     font-size: 25px;
     padding-top: 20px;
+    margin-bottom: 20px;
     margin-left: 40px;
     border-bottom: 2px solid var(--red-900);
     width: fit-content;
@@ -34,10 +16,11 @@ export const SubTitle = styled.h2`
 export const BtnMovie = styled(Link)`
     background-color: transparent;
     border: 0;
+    cursor: grab;
 
     img{
-    object-fit: contain;
     max-height: 300px;
+    width: 90%;
     transition: transform 450ms;
 
     &:hover{
@@ -46,8 +29,6 @@ export const BtnMovie = styled(Link)`
 }
 
 @media screen and (max-width:768px){
-    max-width: 250px;
-
     img{
         &:hover{
             transform: none;
@@ -56,12 +37,10 @@ export const BtnMovie = styled(Link)`
 }
 `
 export const SubTitleSkeleton = styled.div`
-    padding-top: 20px;
-    margin-left: 40px;
+    margin: 10px 0 10px 40px;
     background-color: var(--gray-100);
     width: 170px;
     height: 40px;
-    margin-top: 10px;
     border-radius: 10px;
 `
 export const MovieCardSkeleton = styled.div`
@@ -69,4 +48,12 @@ export const MovieCardSkeleton = styled.div`
     width: 200px;
     height: 300px;
     margin-left: 10px;
+
+    @media screen and (max-width:768px){
+        max-height: 270px;
+        width: 180px;
+}
+    @media screen and (max-width:480px){
+        width: 170px;
+    }
 `

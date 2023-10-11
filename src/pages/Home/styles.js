@@ -58,6 +58,9 @@ export const BannerContent = styled.div`
         }
     }
 `
+export const ContainerMovies = styled.div`
+    margin-left: 13px;
+`
 export const ContainerSkeleton = styled.div`
     height: 480px;
     display: flex;
