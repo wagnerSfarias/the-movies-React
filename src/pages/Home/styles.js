@@ -27,30 +27,29 @@ export const ContainerBanner = styled.div`
 export const BannerContent = styled.div`
     background-color: var(--gray-300);
     margin-left: 30px;
-    padding: 0 10px;
+    padding: 5px 10px;
     border-radius: 5px;
     border-left: 5px solid var(--white);
     z-index: 99;
 
     h1{
-    font-size: 40px;
+    font-size: 34px;
     font-weight: 800;
     padding-bottom: 0.3rem;
     }
 
     @media screen and (max-width:768px){
         margin-left: 20px;
-        padding: 0 5px;
 
         h1{
-        font-size: 2rem;
+        font-size: 30px;
         font-weight: 600;
         width: 100%;
         }
     }
     @media screen and (max-width:480px){
         margin-left: 10px;
-        padding: 0 5px;
+        padding: 3px 5px;
 
         h1{
         font-size: 1.3rem;
